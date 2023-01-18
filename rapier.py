@@ -1,5 +1,5 @@
 import pyautogui
-from PIL import ImageFile
+from PIL import ImageFile, Image
 import mouse
 import time
 import tempfile
@@ -25,6 +25,7 @@ def acquire_bounds() -> list[tuple[int]]:
 
 
 if __name__ == "__main__":
+    """
     upper_left, lower_right = acquire_bounds()
     print(upper_left, lower_right)
     print("Starting... Press ENTER to finish")
@@ -47,3 +48,8 @@ if __name__ == "__main__":
             pyautogui.mouseUp()
             time.sleep(DELAY)
             count += 1
+    """
+
+    imgs = sorted(os.listdir("test"))
+    image_objs = [Image.open(os.path.join("test", i)).convert("RGB") for i in imgs]
+    image_objs[0].save("out.pdf", save_all=True, append_images=image_objs[1:])
