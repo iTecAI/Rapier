@@ -1,0 +1,5 @@
+pyautogui
+python3-xlib
+Pillow
+mouse
+keyboard
